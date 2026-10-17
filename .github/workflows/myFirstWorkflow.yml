@@ -24,4 +24,5 @@ jobs:
         run: | 
           echo "Hi From Bagesh Tripathi"
           echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          echo "Today's date is ${{ env.CURRENT_DATE }}"
   
