@@ -27,16 +27,16 @@ jobs:
           echo "Today's date is ${{ env.CURRENT_DATE }}"
   job3: 
     name: JOB3
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: job1
     steps:
       - name: Run Job 3
         run: sleep 10
   job4: 
     name: JOB4
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: [job1, job2, job3]
     steps:
        - name: Run job4
-         run: Sleep 10
+         run: sleep 10
         
