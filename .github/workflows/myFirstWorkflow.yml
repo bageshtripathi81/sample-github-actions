@@ -23,5 +23,5 @@ jobs:
       - name: Running multiple commands
         run: | 
           echo "Hi From Bagesh Tripathi"
-          echo "Current time is 'date'"
+          echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
   
