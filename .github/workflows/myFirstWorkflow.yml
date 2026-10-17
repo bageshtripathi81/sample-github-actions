@@ -1,11 +1,11 @@
 name: my-first-workflow
+
 # To get trigger on every push in this repo in any branch
 on: 
   schedule:
     - cron: "5 * * * *"
   workflow_dispatch:
   push: 
-
 
 jobs:
   job1: 
@@ -17,25 +17,30 @@ jobs:
       - name: Checking OS release for Github Hosted Runner
         run: cat /etc/os-release
       - name: Calling Sleep
-        run:  sleep 20  
+        run: sleep 20  
+
   job2: 
     name: JOB2
     runs-on: ubuntu-latest
     steps:
       - name: Checkin the hostname for Runner
         run: hostname
+      - name: Save current date to environment
+        run: echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       - name: Running multiple commands
         run: | 
           echo "Hi From Bagesh Tripathi"
-          echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
           echo "Today's date is ${{ env.CURRENT_DATE }}"
+
   job3: 
     name: JOB3
     runs-on: windows-latest
     needs: job1
     steps:
       - name: Run Job 3
+        # Windows runners use PowerShell by default, where 'sleep' is an alias for Start-Sleep
         run: sleep 10
+        
   job4: 
     name: JOB4
     runs-on: macos-latest
@@ -43,4 +48,3 @@ jobs:
     steps:
        - name: Run job4
          run: sleep 10
-        
