@@ -25,4 +25,18 @@ jobs:
           echo "Hi From Bagesh Tripathi"
           echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
           echo "Today's date is ${{ env.CURRENT_DATE }}"
-  
+  job3: 
+    name: JOB3
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Run Job 3
+        run: sleep 10
+  job4: 
+    name: JOB2
+    runs-on: ubuntu-latest
+    needs: [job1, job2, job3]
+    steps:
+       - name: Run job4
+         run: Sleep 10
+        
