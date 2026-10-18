@@ -7,18 +7,19 @@ jobs:
     name: JOB1
     runs-on: ubuntu-latest
     steps:
-      - name: Step-1
-        run: 
-          pwd
-          ls -ltr
-          hostname
-      - name: step -2 - Checkout
+      - name: Checkout
         uses: actions/checkout@v6.1.0
-      - name: step-3
+      - name: Append current working directory
         run: |
-          pwd
+          echo "$(pwd)" >> myartifact.txt
           ls -ltr
           hostname
+      - name: Single File Upload
+        uses: actions/upload-artifact@v7
+        with:
+          name: single file
+          path: ./myartifact.txt
+          
       
         
     
