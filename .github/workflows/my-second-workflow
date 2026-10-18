@@ -1,3 +1,0 @@
-name: my-second-workflow
-on:
-  push:
