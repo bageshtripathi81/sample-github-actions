@@ -2,10 +2,10 @@ name: my-first-workflow
 
 # To get trigger on every push in this repo in any branch
 on: 
-  workflow_dispatch:
-  schedule:
-    - cron: "5 * * * *"
-  # push: 
+   push:
+     branches: 
+       - dev
+       - 'feature-*'
 
 jobs:
   job1: 
@@ -32,19 +32,3 @@ jobs:
           echo "Hi From Bagesh Tripathi"
           echo "Today's date is ${{ env.CURRENT_DATE }}"
 
-  job3: 
-    name: JOB3
-    runs-on: windows-latest
-    needs: job1
-    steps:
-      - name: Run Job 3
-        # Windows runners use PowerShell by default, where 'sleep' is an alias for Start-Sleep
-        run: sleep 10
-        
-  job4: 
-    name: JOB4
-    runs-on: macos-latest
-    needs: [job1, job2, job3]
-    steps:
-       - name: Run job4
-         run: sleep 10
