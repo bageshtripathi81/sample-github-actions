@@ -4,8 +4,7 @@ name: my-first-workflow
 on: 
    push:
      branches: 
-       - dev
-       - 'feature-*'
+       - main
    pull_request:
      branches:
        - main
@@ -34,4 +33,6 @@ jobs:
         run: | 
           echo "Hi From Bagesh Tripathi"
           echo "Today's date is ${{ env.CURRENT_DATE }}"
+      - name: PR Status
+        run: exit 0
 
